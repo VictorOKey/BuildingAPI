@@ -1,16 +1,18 @@
 import * as React from 'react';
 import "./objectItemStyle.css";
 import {NavLink} from 'react-router-dom';
-export default function ObjectItem() {
+import image from '../../assets/foto/AdobeStock_136170652resize_0.jpg';
+export default function ObjectItem({key, title, description, adress}) {
     return (
             <NavLink to={"/ViewObject"} className="navig">
-                <div className="cardS">
+                <div className="cardItem">
                     <div className="infoCard">
-                        <h3>Название</h3>
-                        <p className="infoCard-type"><span style={{color: 'rgb(48, 48, 48, 0.8)', fontWeight: '600',fontSize: '18px'}}>Адрес:</span> тут должен быть адрес string</p>
+                        <h3>{title}</h3>
+                        <p className="infoCard-type"><span style={{color: 'rgb(48, 48, 48, 0.8)', fontWeight: '600',fontSize: '18px'}}>Адрес:</span> {adress}</p>
+                        <p> {description}</p>
                     </div>
-                    <div className="avatarEventMod">
-                        <h3>тут картинка</h3>
+                    <div className="imageAv">
+                        <img src={image} className="imageAv"></img>
                     </div>
                 </div>
             </NavLink>

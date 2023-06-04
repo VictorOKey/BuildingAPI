@@ -1,7 +1,14 @@
+import Header from "../../components/Header/Header";
+import ObjectInfo from "../../components/ObjectInfo/ObjectInfo";
+
+
 const ViewObject = () => {
-  return (
-      <div>ViewObject</div>
-  )
+    return (
+        <div>
+            <Header/>
+            <ObjectInfo/>
+        </div>
+    )
 }
 
 export default ViewObject;
