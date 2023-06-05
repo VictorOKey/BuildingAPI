@@ -1,0 +1,39 @@
+.cardBack{
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    height: auto;
+
+    border: solid 2px;
+    border-radius: 8px;
+    margin-top: 1vh;
+    margin-left: 1vh;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.50);
+
+    padding-bottom: 30px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+    gap: 5px;
+    flex-wrap: wrap;
+    text-align: center;
+    background: rgb(176, 176, 176);
+}
+
+.cardFront{
+    position: static;
+    left: 5%;
+    right: 5%;
+    top: 5%;
+    width: 90%;
+    height: 77vh;
+    border: solid 2px;
+    border-radius: 8px;
+    background: white;
+}
+.pole{
+
+}

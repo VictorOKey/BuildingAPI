@@ -61,7 +61,7 @@ async def create_object(object: objects_schema.ObjectCreate):
         materials_list.append(dict(zip(material, material.values())))
     print(object_result)
     object = {'id': id,
-              'title': object_result['title'],
+              'tite': object_result['title'],
               'address': object_result['address'],
               'img_url': images_list,
               'phone_number': object_result['phone_number'],
@@ -72,7 +72,7 @@ async def create_object(object: objects_schema.ObjectCreate):
     print(object)
     return object
 
-async def get_object(object_id: int):
+    async def get_object(object_id: int):
     query = (select(objects_table.c.id,
                     objects_table.c.title,
                     objects_table.c.address,

@@ -9,7 +9,6 @@ export default function ObjectItem({key, title, description, adress}) {
                     <div className="infoCard">
                         <h3>{title}</h3>
                         <p className="infoCard-type"><span style={{color: 'rgb(48, 48, 48, 0.8)', fontWeight: '600',fontSize: '18px'}}>Адрес:</span> {adress}</p>
-                        <p> {description}</p>
                     </div>
                     <div className="imageAv">
                         <img src={image} className="imageAv"></img>
