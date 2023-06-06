@@ -1,38 +1,21 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import style from './header.module.css';
 import {NavLink} from "react-router-dom";
-
+import Button from 'react-bootstrap/Button';
 export default function Header() {
     return (
-        <AppBar position="static">
-            <Toolbar className={style.header}>
-                <NavLink to={"/Main"}>
-                    <Typography variant="h6"
-                                component="div" sx={{flexGrow: 1}} className={style.text}>
-                        Список Проектов
-                    </Typography>
-                </NavLink>
-                <NavLink to={"/CreateObject"}>
-                    <Button className={style.text}>Создать проект</Button>
-                </NavLink>
-            </Toolbar>
-        </AppBar>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div className="container-fluid">
+                <a className="navbar-brand" href="/Main">Список Проектов</a>
+                <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                    <ul className="navbar-nav">
+                        <li className="nav-item dropdown">
+                            <NavLink to={"/CreateObject"}>
+                            <Button variant="outline-success">Создать Проект</Button>{' '}
+                            </NavLink>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     )
 }
-
-
-/*
-export default function Header() {
-    return(
-        <div>
-            <header className="header">
-                <span>Список Проектов</span>
-                <button>Кнопка</button>
-            </header>
-        </div>
-    )
-}*/

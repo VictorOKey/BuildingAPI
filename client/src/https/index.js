@@ -7,3 +7,5 @@ export const getObjects = () => {
 export const getObject = () => {
     return fetch("http://localhost:8000/get-object/", {method: "get"})
 }
+
+//export default getObject;

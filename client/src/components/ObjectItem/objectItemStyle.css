@@ -26,6 +26,6 @@
 .navig{
     width: 23vw;
     height: 20vh;
-
-
+    text-decoration: inherit;
+    color: inherit
 }
