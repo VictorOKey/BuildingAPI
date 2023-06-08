@@ -9,7 +9,7 @@ export const routs = [
         component: Main
     },
     {
-        path: '/viewObject',
+        path: '/viewObject/:id',
         component: ViewObject
     },
     {
