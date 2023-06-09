@@ -1,0 +1,16 @@
+.TaskMod{
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    top: 10%;
+    bottom: 10%;
+    width: 90%;
+    height: 80%;
+
+    border: solid 2px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.50);
+
+    display: flex;
+    background: rgb(255, 217, 84);
+}

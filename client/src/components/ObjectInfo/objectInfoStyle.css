@@ -20,14 +20,23 @@
     width: 21vw;
     border-right: 4px solid black;
 }
-.imageAv{
+.imageAl{
+    right: 0;
+    top: 0;
+    border-bottom: solid;
+    border-left: solid;
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+}
+.imageIN{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 .buttonStyle{
     position: absolute;
-    left: 5%;
+    left: 50%;
     right: 5%;
     bottom: 5%;
     width: 10vw;
