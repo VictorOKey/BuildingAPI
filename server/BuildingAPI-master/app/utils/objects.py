@@ -61,7 +61,7 @@ async def create_object(object: objects_schema.ObjectCreate):
         materials_list.append(dict(zip(material, material.values())))
     print(object_result)
     object = {'id': id,
-              'tite': object_result['title'],
+              'title': object_result['title'],
               'address': object_result['address'],
               'img_url': images_list,
               'phone_number': object_result['phone_number'],
@@ -72,7 +72,7 @@ async def create_object(object: objects_schema.ObjectCreate):
     print(object)
     return object
 
-    async def get_object(object_id: int):
+async def get_object(object_id: int):
     query = (select(objects_table.c.id,
                     objects_table.c.title,
                     objects_table.c.address,
@@ -128,13 +128,13 @@ async def get_objects():
     print(results_list)
     return {'entries': results_list}
 
-async def get_stages(stage_query: objects_schema.StagesQuery):
+async def get_stages(object_id, status):
     query = (select(
         stages_table.c.stage,
         stages_table.c.status
     ).select_from(stages_table.join(objects_table)).where(and_(
-        objects_table.c.id == stage_query.object_id,
-        stages_table.c.status == stage_query.status
+        objects_table.c.id == object_id,
+        stages_table.c.status == status
     )))
     stages = await database.fetch_all(query)
     stages_list = []
@@ -158,4 +158,3 @@ async def change_status(id, status):
 async def delete_stage(id):
     query = (stages_table.delete().where(stages_table.c.id == id))
     await database.execute(query)
-

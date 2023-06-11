@@ -5,7 +5,6 @@ import Form from 'react-bootstrap/Form';
 import {useState} from "react";
 import {createObject} from "../../https";
 import {Col, Row} from "react-bootstrap";
-import {set} from "react-hook-form";
 
 export default function CreateObject() {
     const [title, setTitle] = useState('')
@@ -15,19 +14,23 @@ export default function CreateObject() {
     const [description, setDiscription] = useState('')
     const [stages, setStages] = useState([])
     const [materials, setMaterials] = useState([])
-    const addStagesAndStatus = () => {
-        setStages([...stages, {stage: '', status: ''}])
+    const addStages = () => {
+        setStages([...stages, {stage: ''}])
     }
-    const changeStagesAndStatus = (key, value, number) => {
+    const changeStages = (key, value, number) => {
         console.log({...stages, [key]: value})
         setStages(stages.map(i => i.number === number ? {...i, [key]: value} : i))
+    }
+    const removeStage = (number) => {
+        setStages(stages.filter(i =>
+            i.number !== number))
     }
     const createObjectOne= (evt) => {
         evt.preventDefault()
         const newObject = {
             title, address, img_url, phone_number, description, stages, materials
         }
-        createObject(newObject);
+        createObject(newObject).then((response) => console.log(response));
         console.log(newObject)
     }
     return (
@@ -44,7 +47,7 @@ export default function CreateObject() {
                 </Form.Group>
                 <Form.Group className="mb-3" size="lg">
                     <Form.Label>Адрес рисунка</Form.Label>
-                    <Form.Control placeholder="Адрес рисунка" onChange={e => setImg_url([{img_url: "string"}].split(', '))} />
+                    <Form.Control placeholder="Адрес рисунка" onChange={e => setImg_url([{img_url: "string"}])}/>
                 </Form.Group>
                 <Form.Group className="mb-3" size="lg">
                     <Form.Label>Номер телефона</Form.Label>
@@ -55,25 +58,25 @@ export default function CreateObject() {
                     <Form.Control placeholder="Описание" onChange={e => setDiscription(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3" size="lg">
-                    <Button variant={"outline-dark"} onClick={addStagesAndStatus}>
+                    <Button variant={"outline-dark"} onClick={addStages}>
                         Добавить Этап
                     </Button>
                     {
                         stages.map(i =>
                             <Row className="mt-4" size="lg" key={i.number}>
-                                <Col md={4}>
+                                <Col>
                                     <Form.Control
                                         value={i.stage}
-                                        onChange={(e) => changeStagesAndStatus('stage', e.target.value, i.number)}
+                                        onChange={(e) => changeStages('stage', e.target.value, i.number)}
                                         placeholder="название этапа"
                                     />
                                 </Col>
                                 <Col md={4}>
-                                    <Form.Control
-                                        value={i.status}
-                                        onChange={(e) => changeStagesAndStatus('status', e.target.value, i.number)}
-                                        placeholder="статус"
-                                    />
+                                    <Button
+                                        onClick={() => removeStage(i.number)}
+                                        variant={"outline-danger"}
+                                    >Удалить</Button>
+
                                 </Col>
                             </Row>
                         )
@@ -81,7 +84,7 @@ export default function CreateObject() {
                 </Form.Group>
                 <Form.Group className="mb-3" size="lg">
                     <Form.Label>Материалы</Form.Label>
-                    <Form.Control placeholder="Материал" onChange={e => setMaterials([{material: "string"}].split(', '))}/>
+                    <Form.Control placeholder="Материал" onChange={e => setMaterials([{material: "string"}])}/>
                 </Form.Group>
                 <Form.Group className="mb-3 " controlId="formBasicCheckbox">
                 </Form.Group>

@@ -12,6 +12,10 @@ export const createObject = (object) => {
         body: JSON.stringify(object)
     })
 }
-export const getStages = (inf) => {
-    return fetch('http://localhost:8000/get-stages', {method: "get"})
+
+
+export const getStages = (id, status) => {
+    return fetch('http://localhost:8000/get-stages'), {method: "post",
+    headers: {"Context-Type": "application-json"},
+    body:JSON.stringify(id, status)}
 }

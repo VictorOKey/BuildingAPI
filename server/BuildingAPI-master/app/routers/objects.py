@@ -13,9 +13,9 @@ async def get_object(id: int):
 async def get_objects():
     return await objects_utils.get_objects()
 
-@router.post("/get-stages", response_model=objects.Stages)
-async def get_stages(query: objects.StagesQuery):
-    return await objects_utils.get_stages(query)
+@router.get("/get-stages", response_model=objects.Stages)
+async def get_stages(object_id: int, status: str):
+    return await objects_utils.get_stages(object_id, status)
 @router.put("/change-status", response_model=objects.Stage)
 async def change_status(id: int, status: str):
     return await objects_utils.change_status(id, status)
